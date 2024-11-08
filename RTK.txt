@@ -1,0 +1,51 @@
+why global state management or (redux) is required?
+because we cannot send data from one sibling to another
+because of prop drilling
+
+npm install @reduxjs/toolkit react-redux
+
+1.store configuration 
+  a. create store by using configureStore
+  b. provide store by the help of Provider wrapper at main.jsx
+    so that all componeny can use store variable <Provider store=(store)></Provider> 
+
+2.defining variable in store and initializing it
+  a.create slice (do as boiler plate mainly change name and initial values)
+  b.add slice to store
+
+3.get store variable
+  a.useSelector
+
+4.change store variable
+  a.make function that can change store variable in slice folder and export it
+  b.useDispatch which call function of slice
+
+//thus slice folder is important
+a.which will add variable in store and initialize it
+b.where function is defined which will change store variable
+
+//search redux devtools
+
+RTk to hit api
+create api
+use the api to store
+
+at store
+  middleware: (getDefaultMiddleware)=>
+    getDefaultMiddleware().concat([
+
+    ]),
+
+//to create api 
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {baseUrl} from "config";
+
+export const blogApi = createApi({
+  reducerPath:"nlogApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl:baseUrl
+  }),
+  tagTypes: [],
+
+  endpoints: (builder) => ({}),
+})
